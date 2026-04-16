@@ -1,89 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <title>Untitled</title>
-    <link rel="stylesheet" href="./style.css">
-
-  </head>
-    
-  <body>
-  <!DOCTYPE html>
-
-<html lang="en">
-
 <head>
+<meta charset="UTF-8">
+<title>OFFLINE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta charset="UTF-8">
+<style>
 
-  <title>OFFLINE</title>
+/* background */
+body {
+ margin: 0;
+ font-family: monospace;
+ background: black;
+ color: pink;
+ text-align: center;
+ animation: bgMove 10s infinite alternate;
+}
 
+/* animation 1: background shift */
+@keyframes bgMove {
+ from {background-position: left;}
+ to {background-position: right;}
+}
+
+/* title */
+h1 {
+ font-size: 60px;
+ animation: flicker 2s infinite;
+}
+
+/* animation 2: flicker */
+@keyframes flicker {
+ 0% {opacity: 1;}
+ 50% {opacity: 0.6;}
+ 100% {opacity: 1;}
+}
+
+/* animation 3: fade in */
+.fade {
+ animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+ from {opacity: 0;}
+ to {opacity: 1;}
+}
+
+/* buttons */
+button {
+ background: transparent;
+ border: 1px solid pink;
+ color: pink;
+ padding: 10px 20px;
+ margin: 5px;
+ cursor: pointer;
+ transition: all 0.3s ease;
+}
+
+/* animation 4: hover grow */
+button:hover {
+ transform: scale(1.2);
+ background: pink;
+ color: black;
+}
+
+/* sections */
+section {
+ height: 100vh;
+ padding-top: 100px;
+}
+
+/* animation 5: slide in */
+.slide {
+ animation: slideUp 1s ease;
+}
+
+@keyframes slideUp {
+ from {transform: translateY(50px);}
+ to {transform: translateY(0);}
+}
+
+/* popup */
+.popup {
+ display: none;
+ position: fixed;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%) scale(0.5);
+ background: black;
+ border: 1px solid pink;
+ padding: 20px;
+ animation: pop 0.5s forwards;
+}
+
+/* animation 6: popup scale */
+@keyframes pop {
+ from {opacity: 0; transform: translate(-50%, -50%) scale(0.5);}
+ to {opacity: 1; transform: translate(-50%, -50%) scale(1);}
+}
+
+</style>
 </head>
 
 <body>
 
+<!-- HOME -->
+<section id="home">
+ <h1>OFFLINE</h1>
+ <p class="fade">enter my world</p>
 
+ <a href="#home"><button>HOME</button></a>
+ <a href="#about"><button>ABOUT</button></a>
+ <a href="#work"><button>WORK</button></a>
 
-  <div class="container">
+ <br><br>
 
-<div id="popup" class="popup">
-  <p>Welcome to my digital space</p>
-  <button id-"closeBtn">close</button> </div>
+ <button id="openBtn">ENTER</button>
 
-    <h1 class="glitch" data-text="OFFLINE">OFFLINE</h1>
+ <p class="fade">Welcome to my digital space ✧</p>
+</section>
 
+<!-- ABOUT -->
+<section id="about">
+ <h1 class="slide">ABOUT</h1>
+ <p class="fade">This is my creative portfolio where I explore design and code.</p>
+</section>
 
+<!-- WORK -->
+<section id="work">
+ <h1 class="slide">WORK</h1>
+ <p class="fade">Projects and animations will go here.</p>
+</section>
 
-    <p class="subtitle">enter my world</p>
-
-
-
-    <div class="nav">
-
-      <button onclick="showSection('home')">HOME</button>
-
-      <button onclick="showSection('about')">ABOUT</button>
-
-      <button onclick="showSection('work')">WORK</button>
-
-    </div>
-
-
-
-    <div id="home" class="section active">
-
-      <p>Welcome to my digital space ✧</p>
-
-    </div>
-
-
-
-    <div id="about" class="section">
-
-      <p>I’m learning web design + animation ♡</p>
-
-    </div>
-
-
-
-    <div id="work" class="section">
-
-      <p>Projects coming soon…</p>
-
-    </div>
-
-
-
-  </div>
-
-
-
-</body>
-
-</html>
-    <script  src="./script.js"></script>
-
-  </body>
-  
-</html>
+<!-- POP
