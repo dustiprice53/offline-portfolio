@@ -40,7 +40,7 @@ color: blue;
 animation: glitchBottom 1s infinite;
 }
 
-/* 4 — flicker keyframes */
+/* keyframes */
 @keyframes flicker {
 0% {opacity: 1;}
 50% {opacity: 0.5;}
@@ -61,7 +61,7 @@ animation: glitchBottom 1s infinite;
 100% {transform: translate(0);}
 }
 
-/* 5 — button hover */
+/* 4 — button hover */
 button {
 margin: 10px;
 padding: 10px 20px;
@@ -78,7 +78,7 @@ background: #ff4df0;
 color: black;
 }
 
-/* 6 — scanlines */
+/* 5 — scanlines */
 body::after {
 content: "";
 position: fixed;
@@ -98,7 +98,17 @@ from {transform: translateY(0);}
 to {transform: translateY(10px);}
 }
 
-/* popup (animation too) */
+/* 6 — fade in */
+.fade {
+animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+from {opacity: 0;}
+to {opacity: 1;}
+}
+
+/* popup animation */
 .popup {
 display: none;
 position: fixed;
@@ -113,4 +123,42 @@ animation: pop 0.4s forwards;
 
 @keyframes pop {
 from {opacity: 0; transform: translate(-50%, -50%) scale(0.5);}
-to {opacity: 1; transform
+to {opacity: 1; transform: translate(-50%, -50%) scale(1);}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1 class="glitch">OFFLINE</h1>
+
+<p class="fade">enter my world</p>
+
+<button>HOME</button>
+<button>ABOUT</button>
+<button>WORK</button>
+
+<br>
+
+<button onclick="openPopup()">ENTER</button>
+
+<p class="fade">Welcome to my digital space ✧</p>
+
+<div id="popup" class="popup">
+<p>Welcome to my digital glitch space</p>
+<button onclick="closePopup()">close</button>
+</div>
+
+<script>
+function openPopup() {
+document.getElementById("popup").style.display = "block";
+}
+
+function closePopup() {
+document.getElementById("popup").style.display = "none";
+}
+</script>
+
+</body>
+</html>
