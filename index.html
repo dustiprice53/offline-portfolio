@@ -6,104 +6,134 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-
-/* background */
 body {
- margin: 0;
- font-family: monospace;
- background: black;
- color: pink;
- text-align: center;
- animation: bgMove 10s infinite alternate;
+margin: 0;
+background: black;
+color: #ff4df0;
+font-family: monospace;
+text-align: center;
+overflow-x: hidden;
 }
 
-/* animation 1: background shift */
-@keyframes bgMove {
- from {background-position: left;}
- to {background-position: right;}
+/* GLITCH TITLE */
+.glitch {
+font-size: 70px;
+position: relative;
+animation: flicker 2s infinite;
 }
 
-/* title */
-h1 {
- font-size: 60px;
- animation: flicker 2s infinite;
+.glitch::before,
+.glitch::after {
+content: "OFFLINE";
+position: absolute;
+left: 0;
+width: 100%;
 }
 
-/* animation 2: flicker */
+.glitch::before {
+color: red;
+animation: glitchTop 1s infinite;
+}
+
+.glitch::after {
+color: blue;
+animation: glitchBottom 1s infinite;
+}
+
+/* ANIMATION 1 */
+@keyframes glitchTop {
+0% {transform: translate(0);}
+20% {transform: translate(-3px, -3px);}
+40% {transform: translate(3px, 3px);}
+60% {transform: translate(-2px, 2px);}
+100% {transform: translate(0);}
+}
+
+/* ANIMATION 2 */
+@keyframes glitchBottom {
+0% {transform: translate(0);}
+20% {transform: translate(3px, 3px);}
+40% {transform: translate(-3px, -3px);}
+60% {transform: translate(2px, -2px);}
+100% {transform: translate(0);}
+}
+
+/* ANIMATION 3 */
 @keyframes flicker {
- 0% {opacity: 1;}
- 50% {opacity: 0.6;}
- 100% {opacity: 1;}
+0% {opacity: 1;}
+50% {opacity: 0.5;}
+100% {opacity: 1;}
 }
 
-/* animation 3: fade in */
-.fade {
- animation: fadeIn 2s ease-in;
-}
-
-@keyframes fadeIn {
- from {opacity: 0;}
- to {opacity: 1;}
-}
-
-/* buttons */
+/* BUTTON */
 button {
- background: transparent;
- border: 1px solid pink;
- color: pink;
- padding: 10px 20px;
- margin: 5px;
- cursor: pointer;
- transition: all 0.3s ease;
+margin-top: 20px;
+padding: 12px 25px;
+border: 1px solid #ff4df0;
+background: black;
+color: #ff4df0;
+cursor: pointer;
+transition: 0.3s;
 }
 
- <button id="openBtn">ENTER</button>
-
- <div id="popup" class="popup"
- <p>Welcome to my digital space </p>
- <button id="closeBtn">close</button>
- </div>
-
-/* animation 4: hover grow */
+/* ANIMATION 4 */
 button:hover {
- transform: scale(1.2);
- background: pink;
- color: black;
+transform: scale(1.2);
+background: #ff4df0;
+color: black;
 }
 
-/* sections */
-section {
- height: 100vh;
- padding-top: 100px;
+/* SCANLINES EFFECT */
+/* ANIMATION 5 */
+body::after {
+content: "";
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: repeating-linear-gradient(
+transparent,
+transparent 2px,
+rgba(255, 0, 150, 0.1) 3px
+);
+animation: scan 4s linear infinite;
+pointer-events: none;
 }
 
-/* animation 5: slide in */
-.slide {
- animation: slideUp 1s ease;
+@keyframes scan {
+from {transform: translateY(0);}
+to {transform: translateY(10px);}
 }
 
-@keyframes slideUp {
- from {transform: translateY(50px);}
- to {transform: translateY(0);}
-}
-
-/* popup */
+/* POPUP */
+/* ANIMATION 6 */
 .popup {
- display: none;
- position: fixed;
- top: 50%;
- left: 50%;
- transform: translate(-50%, -50%) scale(0.5);
- background: black;
- border: 1px solid pink;
- padding: 20px;
- animation: pop 0.5s forwards;
+display: none;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%) scale(0.5);
+background: black;
+border: 1px solid #ff4df0;
+padding: 20px;
+animation: pop 0.4s forwards;
 }
 
-/* animation 6: popup scale */
 @keyframes pop {
- from {opacity: 0; transform: translate(-50%, -50%) scale(0.5);}
- to {opacity: 1; transform: translate(-50%, -50%) scale(1);}
+from {opacity: 0; transform: translate(-50%, -50%) scale(0.5);}
+to {opacity: 1; transform: translate(-50%, -50%) scale(1);}
+}
+
+/* EXTRA ANIMATION 7 */
+.subtitle {
+animation: fade 3s infinite;
+}
+
+@keyframes fade {
+0% {opacity: 0;}
+50% {opacity: 1;}
+100% {opacity: 0;}
 }
 
 </style>
@@ -111,38 +141,26 @@ section {
 
 <body>
 
-<!-- HOME -->
-<section id="home">
- <h1>OFFLINE</h1>
- <p class="fade">enter my world</p>
+<h1 class="glitch">OFFLINE</h1>
 
- <a href="#home"><button>HOME</button></a>
- <a href="#about"><button>ABOUT</button></a>
- <a href="#work"><button>WORK</button></a>
+<p class="subtitle">enter my world</p>
 
- <br><br>
+<button id="openBtn">ENTER</button>
 
- <button id="openBtn">ENTER</button>
+<div id="popup" class="popup">
+<p>Welcome to my digital glitch space</p>
+<button id="closeBtn">close</button>
+</div>
 
- <p class="fade">Welcome to my digital space ✧</p>
-</section>
+<script>
+document.getElementById("openBtn").onclick = function() {
+document.getElementById("popup").style.display = "block";
+}
 
-<!-- ABOUT -->
-<section id="about">
- <h1 class="slide">ABOUT</h1>
- <p class="fade">This is my creative portfolio where I explore design and code.</p>
-</section>
+document.getElementById("closeBtn").onclick = function() {
+document.getElementById("popup").style.display = "none";
+}
+</script>
 
-<!-- WORK -->
-<section id="work">
- <h1 class="slide">WORK</h1>
- <p class="fade">Projects and animations will go here.</p>
-</section>
-
- <script> document.getElementById("openBTN").onclick = function () {
- document.getElementById("closeBtn").onclick = function () {
-  document.getElementById ("popup").style.display = "none"; 
- }
-  </scipt></script>
-
-<!-- POP
+</body>
+</html>
