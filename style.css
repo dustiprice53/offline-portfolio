@@ -126,3 +126,30 @@ button:hover {
   100% { text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff; }
 
 }
+
+/*popup*/
+.popup{
+  display:  none;
+  position: fixed; 
+  top: 50%;
+  left: 50%;
+  transform: translate (-50%, -50%) scale (0.5);
+  background: black;
+  color: pink;
+  padding: 20px;
+  border: 1px solid pink; 
+  animation: pop 0.4s forwards; 
+}
+
+@keyframes pop { 
+  from {opacity: 0; transform: translate (-50%, -50%) scale (0.5); }
+  to {opacity: 1; transform: translate(-50%,-50%) scale (1);}
+}
+button { transition: all 0.3s ease;
+       }
+button:hover {
+  transform: scale (1.1);
+}
+
+
+
