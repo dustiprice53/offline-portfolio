@@ -15,3 +15,11 @@ unction showSection(sectionId) {
   document.getElementById(sectionId).classList.add('active');
 
 }
+
+<script> document.getElementById("openBtn").onclick = function() { 
+  document.getElementById("popup").style.display = "block";
+}
+document.getElementById("closeBtn").oneclick = function () {
+  document.getElementById("popup").style.display="none";
+}
+  </script>
