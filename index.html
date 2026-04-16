@@ -12,56 +12,32 @@ background: black;
 color: #ff4df0;
 font-family: monospace;
 text-align: center;
-overflow: hidden;
 }
 
-/* 1 — flicker */
-.glitch {
-font-size: 60px;
-position: relative;
+/* animation 1 */
+h1 {
+font-size: 50px;
 animation: flicker 2s infinite;
 }
 
-/* 2 — glitch top */
-.glitch::before {
-content: "OFFLINE";
-position: absolute;
-left: 0;
-color: red;
-animation: glitchTop 1s infinite;
-}
-
-/* 3 — glitch bottom */
-.glitch::after {
-content: "OFFLINE";
-position: absolute;
-left: 0;
-color: blue;
-animation: glitchBottom 1s infinite;
-}
-
-/* keyframes */
+/* animation 2 */
 @keyframes flicker {
 0% {opacity: 1;}
-50% {opacity: 0.5;}
+50% {opacity: 0.6;}
 100% {opacity: 1;}
 }
 
-@keyframes glitchTop {
-0% {transform: translate(0);}
-25% {transform: translate(-3px, -3px);}
-50% {transform: translate(3px, 3px);}
-100% {transform: translate(0);}
+/* animation 3 */
+body {
+animation: fadeIn 2s;
 }
 
-@keyframes glitchBottom {
-0% {transform: translate(0);}
-25% {transform: translate(3px, 3px);}
-50% {transform: translate(-3px, -3px);}
-100% {transform: translate(0);}
+@keyframes fadeIn {
+from {opacity: 0;}
+to {opacity: 1;}
 }
 
-/* 4 — button hover */
+/* animation 4 */
 button {
 margin: 10px;
 padding: 10px 20px;
@@ -78,52 +54,33 @@ background: #ff4df0;
 color: black;
 }
 
-/* 5 — scanlines */
-body::after {
-content: "";
-position: fixed;
-width: 100%;
-height: 100%;
-background: repeating-linear-gradient(
-transparent,
-transparent 2px,
-rgba(255, 0, 150, 0.1) 3px
-);
-animation: scan 4s linear infinite;
-pointer-events: none;
+/* animation 5 */
+.subtitle {
+animation: pulse 2s infinite;
 }
 
-@keyframes scan {
-from {transform: translateY(0);}
-to {transform: translateY(10px);}
+@keyframes pulse {
+0% {opacity: 1;}
+50% {opacity: 0.5;}
+100% {opacity: 1;}
 }
 
-/* 6 — fade in */
-.fade {
-animation: fadeIn 2s;
-}
-
-@keyframes fadeIn {
-from {opacity: 0;}
-to {opacity: 1;}
-}
-
-/* popup animation */
+/* animation 6 */
 .popup {
 display: none;
 position: fixed;
 top: 50%;
 left: 50%;
-transform: translate(-50%, -50%) scale(0.5);
+transform: translate(-50%, -50%);
 background: black;
 border: 1px solid #ff4df0;
 padding: 20px;
-animation: pop 0.4s forwards;
+animation: pop 0.4s;
 }
 
 @keyframes pop {
-from {opacity: 0; transform: translate(-50%, -50%) scale(0.5);}
-to {opacity: 1; transform: translate(-50%, -50%) scale(1);}
+from {opacity: 0;}
+to {opacity: 1;}
 }
 
 </style>
@@ -131,34 +88,10 @@ to {opacity: 1; transform: translate(-50%, -50%) scale(1);}
 
 <body>
 
-<h1 class="glitch">OFFLINE</h1>
+<h1>OFFLINE</h1>
 
-<p class="fade">enter my world</p>
+<p class="subtitle">enter my world</p>
 
 <button>HOME</button>
 <button>ABOUT</button>
-<button>WORK</button>
-
-<br>
-
-<button onclick="openPopup()">ENTER</button>
-
-<p class="fade">Welcome to my digital space ✧</p>
-
-<div id="popup" class="popup">
-<p>Welcome to my digital glitch space</p>
-<button onclick="closePopup()">close</button>
-</div>
-
-<script>
-function openPopup() {
-document.getElementById("popup").style.display = "block";
-}
-
-function closePopup() {
-document.getElementById("popup").style.display = "none";
-}
-</script>
-
-</body>
-</html>
+<button>WORK
