@@ -96,8 +96,23 @@ button:hover {
 
 }
 
+.popup {
+  display:none; 
+  position: fixed;
+  top:40%;
+  left:50%
+    transform: translate(-50%, -50%);
+  background: black;
+  color: pink;
+  padding: 20px;
+  border: 1px solid pink;
+  animation: fadeIn 0.5s;
+}
 
-
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
 @keyframes glitch {
 
   0% { text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff; }
