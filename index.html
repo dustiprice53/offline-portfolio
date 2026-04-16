@@ -4,95 +4,130 @@
 <meta charset="UTF-8">
 <title>OFFLINE</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 body {
+margin: 0;
 background: black;
 color: #ff4df0;
 font-family: monospace;
 text-align: center;
-margin: 0;
-padding: 50px;
 }
+
+/* 1 animation */
 h1 {
-font-size: 60px;
+font-size: 50px;
 animation: flicker 2s infinite;
 }
+
 @keyframes flicker {
-0% { opacity: 1; }
-50% { opacity: 0.5; }
-100% { opacity: 1; }
+0% {opacity: 1;}
+50% {opacity: 0.6;}
+100% {opacity: 1;}
 }
-.glitch::before, .glitch::after {
-content: "OFFLINE";
-position: absolute;
-left: 0;
-width: 100%;
+
+/* 2 animation */
+.subtitle {
+animation: fadeIn 2s;
 }
-.glitch::before {
-color: red;
-animation: glitchTop 1s infinite;
+
+@keyframes fadeIn {
+from {opacity: 0;}
+to {opacity: 1;}
 }
-.glitch::after {
-color: blue;
-animation: glitchBottom 1s infinite;
-}
-@keyframes glitchTop {
-0% { transform: translate(0); }
-25% { transform: translate(-2px, -2px); }
-50% { transform: translate(2px, 2px); }
-100% { transform: translate(0); }
-}
-@keyframes glitchBottom {
-0% { transform: translate(0); }
-25% { transform: translate(2px, 2px); }
-50% { transform: translate(-2px, -2px); }
-100% { transform: translate(0); }
-}
+
+/* 3 animation */
 button {
 margin: 10px;
 padding: 10px 20px;
 border: 1px solid #ff4df0;
 background: black;
 color: #ff4df0;
-transition: transform 0.3s;
+cursor: pointer;
+transition: 0.3s;
 }
+
 button:hover {
 transform: scale(1.1);
 background: #ff4df0;
 color: black;
 }
+
+/* 4 animation */
+body {
+animation: fadePage 2s;
+}
+
+@keyframes fadePage {
+from {opacity: 0;}
+to {opacity: 1;}
+}
+
+/* 5 animation */
+.container {
+animation: slideUp 1s;
+}
+
+@keyframes slideUp {
+from {transform: translateY(40px);}
+to {transform: translateY(0);}
+}
+
+/* 6 animation */
 .popup {
 display: none;
 position: fixed;
 top: 50%;
 left: 50%;
-transform: translate(-50%, -50%) scale(0.5);
+transform: translate(-50%, -50%);
 background: black;
 border: 1px solid #ff4df0;
 padding: 20px;
-animation: pop 0.4s forwards;
+animation: pop 0.3s;
 }
+
 @keyframes pop {
-from { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+from {opacity: 0;}
+to {opacity: 1;}
 }
-.subtitle {
-animation: fadeIn 2s;
-}
-@keyframes fadeIn {
-from { opacity: 0; }
-to { opacity: 1; }
-}
+
 </style>
 </head>
+
 <body>
-<h1 class="glitch">OFFLINE</h1>
+
+<div class="container">
+
+<h1>OFFLINE</h1>
+
 <p class="subtitle">enter my world</p>
+
 <button>HOME</button>
 <button>ABOUT</button>
 <button>WORK</button>
+
 <br>
+
 <button onclick="openPopup()">ENTER</button>
+
 <p class="subtitle">Welcome to my digital space ✧</p>
+
+</div>
+
 <div id="popup" class="popup">
-<p
+<p>Welcome to my digital space</p>
+<button onclick="closePopup()">close</button>
+</div>
+
+<script>
+function openPopup() {
+document.getElementById("popup").style.display = "block";
+}
+
+function closePopup() {
+document.getElementById("popup").style.display = "none";
+}
+</script>
+
+</body>
+</html>
